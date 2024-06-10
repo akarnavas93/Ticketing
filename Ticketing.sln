@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3938F517-F442-4EB3-9DEE-7896466AE5B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02E1261B-978E-431B-8A81-C322484E82CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{357F1D20-BC16-40CC-987D-E1FE6CDA759B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Abstractions", "Shared.Abstractions\Shared.Abstractions.csproj", "{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Primitives", "Shared.Primitives\Shared.Primitives.csproj", "{768DEBFE-B766-4655-918A-AF4CA540ED89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticketing.Domain", "Ticketing.Domain\Ticketing.Domain.csproj", "{04F1BC9D-99E1-4E16-A282-038B2350818F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Constants", "Shared.Constants\Shared.Constants.csproj", "{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticketing.Infrastructure", "Ticketing.Infrastructure\Ticketing.Infrastructure.csproj", "{B15ABDF1-E04F-48F1-89C6-19817D74D4E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768DEBFE-B766-4655-918A-AF4CA540ED89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768DEBFE-B766-4655-918A-AF4CA540ED89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768DEBFE-B766-4655-918A-AF4CA540ED89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768DEBFE-B766-4655-918A-AF4CA540ED89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F1BC9D-99E1-4E16-A282-038B2350818F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F1BC9D-99E1-4E16-A282-038B2350818F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F1BC9D-99E1-4E16-A282-038B2350818F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F1BC9D-99E1-4E16-A282-038B2350818F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15ABDF1-E04F-48F1-89C6-19817D74D4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15ABDF1-E04F-48F1-89C6-19817D74D4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15ABDF1-E04F-48F1-89C6-19817D74D4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15ABDF1-E04F-48F1-89C6-19817D74D4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{357F1D20-BC16-40CC-987D-E1FE6CDA759B} = {3938F517-F442-4EB3-9DEE-7896466AE5B1}
+		{DA80F41E-27C0-4ED5-9AFA-512BB15DF6A5} = {357F1D20-BC16-40CC-987D-E1FE6CDA759B}
+		{768DEBFE-B766-4655-918A-AF4CA540ED89} = {357F1D20-BC16-40CC-987D-E1FE6CDA759B}
+		{04F1BC9D-99E1-4E16-A282-038B2350818F} = {3938F517-F442-4EB3-9DEE-7896466AE5B1}
+		{5CB8EE16-5FD1-4217-BBA1-48B6506CBE58} = {357F1D20-BC16-40CC-987D-E1FE6CDA759B}
+		{B15ABDF1-E04F-48F1-89C6-19817D74D4E6} = {3938F517-F442-4EB3-9DEE-7896466AE5B1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7B06AD0-4671-4D21-BED1-F37BC6E5137B}
+	EndGlobalSection
+EndGlobal
