@@ -1,6 +1,6 @@
 ﻿namespace Ticketing.Domain.Entities;
 
-public sealed class Ticket : Entity
+public class Ticket : Entity
 {
     public required string Title { get; set; }
     public required string Description { get; set; }

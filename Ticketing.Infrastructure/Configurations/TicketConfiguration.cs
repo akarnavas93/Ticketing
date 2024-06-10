@@ -15,5 +15,17 @@ internal class TicketConfiguration : IEntityTypeConfiguration<Ticket>
         builder
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
+
+        builder
+            .HasOne(x => x.CreateUser)
+            .WithMany();
+
+        builder
+            .HasOne(x => x.ActionUser)
+            .WithMany();
+
+        builder
+            .HasOne(x => x.Shipment)
+            .WithMany();
     }
 }
