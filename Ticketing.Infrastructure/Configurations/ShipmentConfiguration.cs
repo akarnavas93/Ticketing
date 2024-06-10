@@ -15,5 +15,9 @@ internal class ShipmentConfiguration : IEntityTypeConfiguration<Shipment>
         builder
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
+
+        builder
+            .HasIndex(x => new { x.TrackingNumber, x.Carrier })
+            .IsUnique();
     }
 }

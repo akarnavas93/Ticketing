@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Ticketing.App.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,7 @@ builder
 builder.Services.AddMediatR(cfg =>cfg.RegisterServicesFromAssembly(
     Ticketing.Application.AssemblyReference.Assembly));
 
-builder.Services.AddControllers()
-    .AddApplicationPart(Ticketing.Presentation.AssemblyReference.Assembly);
+builder.Services.AddControllers();
 
 builder.Services.AddDbContext<Ticketing.Infrastructure.ApplicationDbContext>(
     dbContextOptionsBuilder =>
@@ -39,6 +39,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

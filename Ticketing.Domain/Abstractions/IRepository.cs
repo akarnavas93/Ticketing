@@ -14,5 +14,7 @@ public interface IRepository
 
     Task<TEntity?> FindByIdAsync<TEntity>(Guid id) where TEntity : Entity;
 
-    IQueryable<TEntity> GetQueryableAsync<TEntity>() where TEntity : Entity;
+    IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : Entity;
+
+    Task<int> CommitAsync(CancellationToken cancellation);
 }

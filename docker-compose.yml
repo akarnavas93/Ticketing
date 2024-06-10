@@ -4,26 +4,34 @@ services:
   ticketing.app:
     image: ${DOCKER_REGISTRY-}ticketingapp
     depends_on:
-      - "ticketing-db"
-    container_name: ticketing-app
+      - "ticketing.db"
+    container_name: ticketing.app
     build:
       context: .
       dockerfile: Ticketing.App/Dockerfile
     networks:
       - dev
+
   ticketing.db:
     image: postgres:latest
-    container_name: ticketing-db
+    container_name: ticketing.db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=12345678
       - POSTGRES_DB=Ticketing
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    hostname: ticketing.db
     ports:
-      - "5433:5432"
+      - "5432:5432"
     restart: always
     volumes:
       - app_data:/var/lib/postgresql/data
     networks:
       - dev
+
 volumes:
   app_data:
+    driver: local
+networks:
+  dev:
+    driver: bridge
