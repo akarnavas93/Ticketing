@@ -37,4 +37,14 @@ public readonly struct Result<T>
     {
         return new Result<T>(value);
     }
+
+    public static Result<object> Success()
+    {
+        return new Result<object>()
+        {
+            Value = default,
+            IsSuccess = true,
+            Error = Error.None,
+        };
+    }
 }

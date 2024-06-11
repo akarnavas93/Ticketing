@@ -4,6 +4,6 @@ namespace Ticketing.Domain.Errors;
 
 public static class ShipmentErrors
 {
-    public static Error ShipmentNotFound(string shipmentData) => new("Shipment.NotFound",
-        $"Shipment with info {shipmentData} was not found", 404);
+    public static Error NotFound(string id) => new("Shipment.NotFound",
+        $"Shipment {id} was not found", 404);
 }

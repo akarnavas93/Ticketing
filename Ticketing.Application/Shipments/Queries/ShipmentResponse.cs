@@ -1,6 +1,6 @@
 ﻿using Shared.Constants.Enum;
 
-namespace Ticketing.Application.Shipments.Queries.GetShipmentById;
+namespace Ticketing.Application.Shipments.Queries;
 
 public sealed record ShipmentResponse(
     Guid Id,

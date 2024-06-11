@@ -2,6 +2,7 @@
 using Ticketing.Domain.Entities;
 using Shared.Abstractions.Messaging;
 using Ticketing.Domain.Abstractions;
+using Ticketing.Domain.Errors;
 
 namespace Ticketing.Application.Shipments.Queries.GetShipmentById;
 
@@ -24,7 +25,7 @@ internal sealed class GetShipmentByIdQueryHandler(IRepository repo)
 
         if (shipment == null)
         {
-            return Error.NullValue(nameof(shipment));
+            return ShipmentErrors.NotFound($"{request.ShipmentId}");
         }
 
         var response = new ShipmentResponse(

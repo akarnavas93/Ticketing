@@ -4,6 +4,6 @@ namespace Ticketing.Domain.Errors;
 
 public static class TicketErrors
 {
-    public static Error TicketNotFound(string ticketData) => new("Ticket.NotFound",
-        $"Ticket with info {ticketData} was not found", 404);
+    public static Error NotFound(string id) => new("Ticket.NotFound",
+        $"Ticket {id} was not found", 404);
 }

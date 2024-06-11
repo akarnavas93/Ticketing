@@ -1,4 +1,5 @@
 ﻿using Shared.Abstractions;
+using Shared.Constants.Enum;
 using Ticketing.Domain.Entities;
 using Shared.Abstractions.Messaging;
 using Ticketing.Domain.Abstractions;
@@ -17,6 +18,22 @@ internal sealed class CreateShipmentCommandHandler(IRepository repo)
         if (request == null)
         {
             return Error.NullValue(nameof(request));
+        }
+
+        if (request.ShippedAt.HasValue &&
+            request.Status < ShipmentTrackingStatus.Shipped)
+        {
+            return new Error("Shipment.ValidationError",
+                "Cannot give shipped time if shipment not shipped yet",
+                400);
+        }
+
+        if (request.ArrivedAt.HasValue &&
+            request.Status < ShipmentTrackingStatus.Delivered)
+        {
+            return new Error("Shipment.ValidationError",
+                "Cannot give arrival time if shipment not arrived yet",
+                400);
         }
 
         var shipment = new Shipment

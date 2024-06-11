@@ -4,6 +4,6 @@ namespace Ticketing.Domain.Errors;
 
 public static class UserErrors
 {
-    public static Error UserNotFound(string userData) => new("User.NotFound",
-        $"User with info {userData} was not found", 404);
+    public static Error NotFound(string id) => new("User.NotFound",
+        $"User {id} was not found", 404);
 }
