@@ -59,6 +59,7 @@ namespace Ticketing.Application.Tickets.Commands.CreateTicket
                 ActionUserId = request.ActionUserId.Value,
                 CreateUserId = request.CreateUserId.Value,
                 ShipmentId = request.ShipmentId.Value,
+                Status = Shared.Constants.TicketStatus.Backlog,
                 CreatedBy = createUser.Email,
                 UpdatedBy = createUser.Email
             };

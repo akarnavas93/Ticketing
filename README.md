@@ -47,7 +47,7 @@ made to ensure the shipment situation and enhance the service quality insights.
 >>> This is the core model of the system that binds together all the other entities.
 It has a user that creates it and a user that it is assigned to. There is also a relationship to
 a specific shipment. The goal is to be able to provide info on the ticket itself along with info about the shipment it refers to.
-A future improvement would be to make ticket statuses, so that the procedure is more robust for the task.
+A future improvement would be to enhance ticket statuses, so that the procedure is more robust for the task.
 Also a notification service would benefit the assignee and the creator to be able to get notifies when a ticket is assigned to you,
 as well as being notified for the status changes made on a ticket. Also if the business demands it,
 a logic based on account type (e.g. operations), so tha specific account types can create tickets or
