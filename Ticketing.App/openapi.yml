@@ -7,6 +7,7 @@ paths:
     get:
       tags:
         - Shipments
+      operationId: Get all shpiments
       parameters:
         - name: trackingNumber
           in: query
@@ -22,6 +23,7 @@ paths:
     patch:
       tags:
         - Shipments
+      operationId: Update a shipment
       requestBody:
         content:
           application/json:
@@ -73,12 +75,14 @@ paths:
     get:
       tags:
         - Tickets
+      operationId: Get tickets for current user
       responses:
         '200':
           description: Success
     post:
       tags:
         - Tickets
+      operationId: Create a ticket
       requestBody:
         content:
           application/json:
@@ -93,10 +97,37 @@ paths:
       responses:
         '200':
           description: Success
+  '/api/tickets/{id}':
+    patch:
+      tags:
+        - Tickets
+      operationId: Update a ticket
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketRequest'
+      responses:
+        '200':
+          description: Success
   /api/users/login:
     post:
       tags:
         - Users
+      operationId: 'User login, get token'
       requestBody:
         content:
           application/json:
@@ -177,6 +208,13 @@ components:
         - 4
       type: integer
       format: int32
+    TicketStatus:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
     UpdateShipmentCommand:
       type: object
       properties:
@@ -190,6 +228,22 @@ components:
           $ref: '#/components/schemas/ShipmentTrackingStatus'
         carrier:
           $ref: '#/components/schemas/ShipmentCarrier'
+      additionalProperties: false
+    UpdateTicketRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        actionUserId:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          $ref: '#/components/schemas/TicketStatus'
       additionalProperties: false
   securitySchemes:
     Bearer:

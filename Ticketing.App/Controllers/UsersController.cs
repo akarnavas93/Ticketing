@@ -8,7 +8,7 @@ namespace Ticketing.Presentation.Controllers;
 public sealed class UsersController(ISender sender)
     : ApiController(sender)
 {
-    [HttpPost("login")]
+    [HttpPost("login", Name = "User login, get token")]
     public async Task<IActionResult> LoginUser(
         [FromBody] LoginRequest loginRequest,
         CancellationToken cancellationToken)

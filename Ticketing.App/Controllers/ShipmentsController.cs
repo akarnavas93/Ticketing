@@ -15,7 +15,7 @@ public sealed class ShipmentsController(ISender sender)
     : ApiController(sender)
 {
     [Authorize]
-    [HttpGet]
+    [HttpGet(Name = "Get all shpiments")]
     public async Task<IActionResult> GetShipmentsAsync(
         string? trackingNumber, ShipmentCarrier? carrierId)
     {
@@ -23,7 +23,8 @@ public sealed class ShipmentsController(ISender sender)
             new SearchShipmentQuery(trackingNumber, carrierId)));
     }
 
-    [HttpPatch]
+    [Authorize]
+    [HttpPatch(Name = "Update a shipment")]
     public async Task<IActionResult> UpdateShipmentAsync(
         [FromBody] UpdateShipmentCommand updateShipmentCommand,
         CancellationToken cancellationToken)
@@ -32,6 +33,7 @@ public sealed class ShipmentsController(ISender sender)
             updateShipmentCommand, cancellationToken));
     }
 
+    [Authorize]
     [HttpPost(Name = "Create a shipment")]
     public async Task<IActionResult> CreateShipmentAsync(
         [FromBody] CreateShipmentCommand shipmentCommand,
@@ -41,6 +43,7 @@ public sealed class ShipmentsController(ISender sender)
             shipmentCommand, cancellationToken));
     }
 
+    [Authorize]
     [HttpGet("{id}", Name = "Get a specific shipment")]
     public async Task<IActionResult> GetShipmentByIdAsync(
         Guid id, CancellationToken cancellationToken)

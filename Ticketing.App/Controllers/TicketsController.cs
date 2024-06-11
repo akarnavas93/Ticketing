@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Ticketing.Application.Tickets.Queries.GetUserTickets;
 using Ticketing.Application.Tickets.Commands.CreateTicket;
+using Ticketing.Application.Tickets.Commands.UpdateTicket;
+using Ticketing.Application.Tickets.Queries.GetUserTickets;
 
 namespace Ticketing.Presentation.Controllers
 {
@@ -9,7 +11,8 @@ namespace Ticketing.Presentation.Controllers
     public class TicketsController(ISender sender)
         : ApiController(sender)
     {
-        [HttpGet]
+        [Authorize]
+        [HttpGet(Name = "Get tickets for current user")]
         public async Task<IActionResult> GetUserTickets(
             CancellationToken cancellationToken)
         {
@@ -19,7 +22,8 @@ namespace Ticketing.Presentation.Controllers
                 query, cancellationToken));
         }
 
-        [HttpPost]
+        [Authorize]
+        [HttpPost(Name = "Create a ticket")]
         public async Task<IActionResult> CreateTicket(
             [FromBody] CreateTicketRequest request,
             CancellationToken cancellationToken)
@@ -30,6 +34,25 @@ namespace Ticketing.Presentation.Controllers
                 GetUserId(),
                 request.ActionUserId,
                 request.ShpmentId);
+
+            return CustomResponse(await Sender.Send(
+                command, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpPatch("{id}", Name = "Update a ticket")]
+        public async Task<IActionResult> UpdateTicket(
+            Guid id,
+            [FromBody] UpdateTicketRequest request,
+            CancellationToken cancellationToken)
+        {
+            var command = new UpdateTicketCommand(
+                id,
+                request.Title,
+                request.Description,
+                GetUserId(),
+                request.ActionUserId,
+                request.Status);
 
             return CustomResponse(await Sender.Send(
                 command, cancellationToken));
