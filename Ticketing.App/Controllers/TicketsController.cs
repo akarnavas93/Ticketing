@@ -1,10 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Ticketing.Presentation.Controllers;
 using Ticketing.Application.Tickets.Queries.GetUserTickets;
 using Ticketing.Application.Tickets.Commands.CreateTicket;
 
-namespace Ticketing.App.Controllers
+namespace Ticketing.Presentation.Controllers
 {
     [Route("api/tickets")]
     public class TicketsController(ISender sender)

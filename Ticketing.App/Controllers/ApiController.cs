@@ -30,7 +30,7 @@ namespace Ticketing.Presentation.Controllers
                 statusCode: result.Error.StatusCode);
         }
 
-        public Guid GetUserId()
+        protected Guid GetUserId()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 

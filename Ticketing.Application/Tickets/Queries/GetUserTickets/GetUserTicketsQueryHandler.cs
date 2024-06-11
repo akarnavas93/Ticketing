@@ -5,10 +5,12 @@ using Ticketing.Domain.Abstractions;
 
 namespace Ticketing.Application.Tickets.Queries.GetUserTickets;
 
-internal sealed class GetUserTicketsQueryHandler(IRepository repo)
+internal sealed class GetUserTicketsQueryHandler(
+        IRepository repo, ITicketRepository ticketRepo)
     : IQueryHandler<GetUserTicketsQuery, UserTicketsResponse>
 {
     private readonly IRepository _repo = repo;
+    private readonly ITicketRepository _ticketRepo = ticketRepo;
 
     public async Task<Result<UserTicketsResponse>> Handle(
         GetUserTicketsQuery request,
@@ -28,8 +30,9 @@ internal sealed class GetUserTicketsQueryHandler(IRepository repo)
             .Where(t => t.CreateUserId == request.UserId)
             .ToList();
 
-        var assignedTicketsResponse = assignedTickets.Select(t =>
-            new TicketResponse(
+        var assignedTicketsResponse = _ticketRepo
+            .GetAssignedTickets(request.UserId)
+            .Select(t => new TicketResponse(
                 t.Id,
                 t.Title,
                 t.Description,
@@ -40,8 +43,9 @@ internal sealed class GetUserTicketsQueryHandler(IRepository repo)
                 t.CreatedBy))
             .ToList();
 
-        var createdTicketsResponse = createdTickets.Select(t =>
-            new TicketResponse(
+        var createdTicketsResponse = _ticketRepo
+            .GetCreatedTickets(request.UserId)
+            .Select(t => new TicketResponse(
                 t.Id,
                 t.Title,
                 t.Description,
@@ -52,6 +56,7 @@ internal sealed class GetUserTicketsQueryHandler(IRepository repo)
                 t.CreatedBy))
             .ToList();
 
-        return new UserTicketsResponse(assignedTicketsResponse, createdTicketsResponse);
+        return await Task.FromResult(
+            new UserTicketsResponse(assignedTicketsResponse, createdTicketsResponse));
     }
 }

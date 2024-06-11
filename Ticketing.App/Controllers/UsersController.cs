@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Ticketing.Application.Users.Commands.Login;
-using Ticketing.Presentation.Controllers;
 
-namespace Ticketing.App.Controllers;
+namespace Ticketing.Presentation.Controllers;
 
 [Route("api/users")]
 public sealed class UsersController(ISender sender)
