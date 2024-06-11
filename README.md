@@ -61,3 +61,7 @@ get assigned one, would ensure ticket integrity and minimize the noise in the sy
 > There is also support for swagger, as well as a postman collection with all the endpoints included.
 
 > Test where not written because of time pressure, already taken mitigating actions.
+
+> If there are gaps or questions, on anything, feel free to contact me at fareblc@gmail.com
+
+#### ***Antonis Karnavas***
