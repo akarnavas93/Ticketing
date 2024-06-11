@@ -18,17 +18,20 @@ internal class TicketConfiguration : IEntityTypeConfiguration<Ticket>
 
         builder
             .HasOne(x => x.CreateUser)
-            .WithMany()
+            .WithMany(x => x.CreatedTickets)
+            .HasForeignKey(x => x.CreateUserId)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder
             .HasOne(x => x.ActionUser)
-            .WithMany()
+            .WithMany(x => x.AssignedTickets)
+            .HasForeignKey(x => x.ActionUserId)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder
             .HasOne(x => x.Shipment)
-            .WithMany()
+            .WithMany(x => x.Tickets)
+            .HasForeignKey(x => x.ShipmentId)
             .OnDelete(DeleteBehavior.SetNull);
     }
 }

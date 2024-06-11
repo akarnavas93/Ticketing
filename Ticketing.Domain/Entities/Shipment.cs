@@ -10,4 +10,11 @@ public sealed class Shipment : Entity
     public DateTimeOffset? ShippedAt { get; set; }
     public DateTimeOffset? ArrivedAt { get; set; }
     public DateTimeOffset? CurrentStatusStartedAt { get; set; }
+    public IList<Ticket> Tickets { get; set; }
+
+    public Shipment()
+    {
+        Tickets = new List<Ticket>();
+        Status = ShipmentTrackingStatus.Unknown;
+    }
 }

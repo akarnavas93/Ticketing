@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Shared.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Ticketing.Presentation.Controllers
 {
@@ -27,6 +28,20 @@ namespace Ticketing.Presentation.Controllers
                 title: result.Error.Code,
                 detail: result.Error.Description,
                 statusCode: result.Error.StatusCode);
+        }
+
+        public Guid GetUserId()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            try
+            {
+                return Guid.Parse(userId);
+            }
+            catch (Exception)
+            {
+                return Guid.Empty;
+            }
         }
     }
 }
