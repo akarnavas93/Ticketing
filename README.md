@@ -52,3 +52,12 @@ Also a notification service would benefit the assignee and the creator to be abl
 as well as being notified for the status changes made on a ticket. Also if the business demands it,
 a logic based on account type (e.g. operations), so tha specific account types can create tickets or
 get assigned one, would ensure ticket integrity and minimize the noise in the system.
+
+## Final Remarks
+> It is recommended to run the docker-compose project, to be able to run the application and all the environments.
+
+> The ports for each application are listed in the docker-compose.yml
+
+> There is also support for swagger, as well as a postman collection with all the endpoints included.
+
+> Test where not written because of time pressure, already taken mitigating actions.
