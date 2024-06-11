@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Ticketing.Infrastructure;
@@ -11,9 +12,11 @@ using Ticketing.Infrastructure;
 namespace Ticketing.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240611112535_ModifyUserAddPasswordSpecificColumns")]
+    partial class ModifyUserAddPasswordSpecificColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,41 +149,6 @@ namespace Ticketing.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users", "accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("0afe7827-a0cf-47d4-9820-488d84b894b0"),
-                            AccountType = (byte)1,
-                            Created = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Email = "operations@bar.com",
-                            Name = "foo",
-                            PasswordHash = "y0hJNdP2TNzYp1JrFnO/PhrGL7BI567/OskMBZ/bjBzmlQND1AO3bTiYFTGlGcMmDRNfUbOVLytbH+K3k2FjYw==",
-                            PasswordSalt = "6MonNb30kVohmzyk6hvpm9Pn7x66ATPe7DbEhUqeHAPZtL5xS8D29xEfs9lewyMKBQzAiYCH2aH5FpgH+Edd3Ov5Qk+rImsGdiN49W43SafAXsx5XFmRJs1UrJV6HgA70GrLpoZ//MJVH7DoKw7E8i1YhsIIzXb9m1Xr6EVGlYk=",
-                            Updated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            Id = new Guid("30b3e2db-213c-4519-8dee-83b70133db35"),
-                            AccountType = (byte)2,
-                            Created = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Email = "it@bar.com",
-                            Name = "bar",
-                            PasswordHash = "y0hJNdP2TNzYp1JrFnO/PhrGL7BI567/OskMBZ/bjBzmlQND1AO3bTiYFTGlGcMmDRNfUbOVLytbH+K3k2FjYw==",
-                            PasswordSalt = "6MonNb30kVohmzyk6hvpm9Pn7x66ATPe7DbEhUqeHAPZtL5xS8D29xEfs9lewyMKBQzAiYCH2aH5FpgH+Edd3Ov5Qk+rImsGdiN49W43SafAXsx5XFmRJs1UrJV6HgA70GrLpoZ//MJVH7DoKw7E8i1YhsIIzXb9m1Xr6EVGlYk=",
-                            Updated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        },
-                        new
-                        {
-                            Id = new Guid("df862849-2e4b-4f54-ae81-a8b55cf2fd17"),
-                            AccountType = (byte)0,
-                            Created = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Email = "undefined@bar.com",
-                            Name = "foobar",
-                            PasswordHash = "y0hJNdP2TNzYp1JrFnO/PhrGL7BI567/OskMBZ/bjBzmlQND1AO3bTiYFTGlGcMmDRNfUbOVLytbH+K3k2FjYw==",
-                            PasswordSalt = "6MonNb30kVohmzyk6hvpm9Pn7x66ATPe7DbEhUqeHAPZtL5xS8D29xEfs9lewyMKBQzAiYCH2aH5FpgH+Edd3Ov5Qk+rImsGdiN49W43SafAXsx5XFmRJs1UrJV6HgA70GrLpoZ//MJVH7DoKw7E8i1YhsIIzXb9m1Xr6EVGlYk=",
-                            Updated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
-                        });
                 });
 
             modelBuilder.Entity("Ticketing.Domain.Entities.Ticket", b =>

@@ -28,6 +28,8 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
         return base.SaveChangesAsync(cancellationToken);
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) =>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+    }
 }

@@ -6,13 +6,15 @@ using Ticketing.Application.Shipments.Queries.SearchShipment;
 using Ticketing.Application.Shipments.Commands.CreateShipment;
 using Ticketing.Application.Shipments.Commands.UpdateShipment;
 using Ticketing.Application.Shipments.Queries.GetShipmentById;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ticketing.Presentation.Controllers;
 
 [Route("api/shipments")]
-public sealed class ShipmentController(ISender sender)
+public sealed class ShipmentsController(ISender sender)
     : ApiController(sender)
 {
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetShipmentsAsync(
         string? trackingNumber, ShipmentCarrier? carrierId)
