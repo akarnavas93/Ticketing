@@ -15,7 +15,6 @@ COPY ["Shared.Abstractions/Shared.Abstractions.csproj", "Shared.Abstractions/"]
 COPY ["Shared.Constants/Shared.Constants.csproj", "Shared.Constants/"]
 COPY ["Ticketing.Domain/Ticketing.Domain.csproj", "Ticketing.Domain/"]
 COPY ["Ticketing.Infrastructure/Ticketing.Infrastructure.csproj", "Ticketing.Infrastructure/"]
-COPY ["Ticketing.Presentation/Ticketing.Presentation.csproj", "Ticketing.Presentation/"]
 RUN dotnet restore "./Ticketing.App/Ticketing.App.csproj"
 COPY . .
 WORKDIR "/src/Ticketing.App"
